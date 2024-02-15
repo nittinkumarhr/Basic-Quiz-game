@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Question & Answer </h1>
+        </div>
+    </div>
+</div>
+<div class="text-container my-5 p-5">
+{% if data  %}
+    {% for i in data %}
+        
+        <form method='POST' action="{% url 'score'%}" >
+            {% csrf_token %}
+            <h4>Q. {{ forloop.counter }}. {{ i.question }}</h4>
+        
+            <div class="btn-group-vertical p-7" role="group" aria-label="Vertical radio toggle button group">
+                <input type="radio" class="btn-check" name="{{ i.question }}" id="vbtn-radio{{ forloop.counter }}-1" value="{{ i.incorrect_answers.0 }}" autocomplete="off">
+                <label class="btn btn-outline-danger" for="vbtn-radio{{ forloop.counter }}-1">{{ i.incorrect_answers.0 }}</label>
+                <input type="radio" class="btn-check" name="{{ i.question }}" id="vbtn-radio{{ forloop.counter }}-2" value="{{ i.incorrect_answers.1 }}" autocomplete="off">
+                <label class="btn btn-outline-danger" for="vbtn-radio{{ forloop.counter }}-2">{{ i.incorrect_answers.1 }}</label>
+                <input type="radio" class="btn-check" name="{{ i.question }}" id="vbtn-radio{{ forloop.counter }}-3" value="{{ i.incorrect_answers.2 }}" autocomplete="off">
+                <label class="btn btn-outline-danger" for="vbtn-radio{{ forloop.counter }}-3">{{ i.incorrect_answers.2 }}</label>
+                <input type="radio" class="btn-check" name="{{ i.question }}" id="vbtn-radio{{ forloop.counter }}-4" value="{{ i.correct_answer }}" autocomplete="off">
+                <label class="btn btn-outline-danger" for="vbtn-radio{{ forloop.counter }}-4">{{ i.correct_answer }}</label>
+                <br>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-outline-primary my-6  my_bt">Result</button>
+{% else %}
+    <h1 style="color: red;" class = "text-center">Please select the Quiz</h1>
+{% endif %}
+    
+
+    
+        
+
+    </form>
+</div>
+{% endblock %}

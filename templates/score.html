@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<div class="container-center p-5">
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header text-center ">
+            <h3 class="card-title">Score Card</h3>
+        </div>
+        <div class="card-body">
+        <h5 class="card-title">Total Correct Questions </h5>
+        <p class='text-danger'>{{total_correct_answer}}</p>
+        <h5 class="card-title">Total Incorrect Questions </h5>
+        <p class='text-danger'>{{total_incorrect_answer}}</p>
+        <h5 class="card-title">Correct Ans Persentage</h5>
+        <p class='text-danger'>{{Presentage}}</p>
+        </div>
+        
+    </div>
+</div>
+
+<div class="container-flex-end ans_show">
+  <h3>Your Rights Answers</h3>
+  {% if right_data %}
+  {% for key, value in right_data.items %}
+      <p>Q. {{ forloop.counter }}. Key: {{ key }}, <h5>Answer</h5>  {{ value }}</p>
+  {% endfor %}
+{% else %}
+  <h4 style="color: red;">NO Correct Answer</h4>
+{% endif %}
+
+</div>
+
+
+<div class="container-flex-end ans_show">
+  <h3>Your Wrong Answers</h3>
+  {% if wrong_ans_data %}
+  {% for key, value in wrong_ans_data.items %}
+      <p>Q. {{ forloop.counter }}. Key: {{ key }}, <h5>Answer</h5>  {{ value }}</p>
+  {% endfor %}
+{% else %}
+  <h4 style="color: Green;">All Correct Answer</h4>
+{% endif %}
+
+</div>
+  
+{% endblock %}

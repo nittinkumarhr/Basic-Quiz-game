@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+<form method='POST'>
+    {% csrf_token %}
+    <fieldset>
+      <legend>Fill The Required Details</legend>
+     
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
+        <input type="text" class="form-control" id="exampleInputName" aria-describedby="namehelp" placeholder="Enter Name" name='name'>
+        
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label mt-4">Number of Question</label>
+        <input type="Number" class="form-control" id="exampleInputNumber" placeholder="Number" autocomplete="off" name='number'>
+      </div>
+      <div class="form-group">
+        <label for="Category" class="form-label mt-4">Select Category</label>
+        <select class="form-select" id="Category" name='category'>
+            <option value="">Any Category</option>
+            <option value="General Knowledge">General Knowledge</option>
+            <option value="Entertainment Books">Entertainment Books</option>
+            <option value="Entertainment Film">Entertainment Film</option>
+            <option value="Entertainment Music">Entertainment Music</option>
+            <option value="Entertainment Musicals & Theatres">Entertainment Musicals & Theatres</option>
+            <option value="Entertainment Television">Entertainment Television</option>
+            <option value="Entertainment Video Games">Entertainment Video Games</option>
+            <option value="Entertainment Board Games">Entertainment Board Games</option>
+            <option value="Science & Nature">Science & Nature</option>
+            <option value="Science Computers">Science Computers</option>
+            <option value="Science Mathematics">Science Mathematics</option>
+            <option value="Mythology">Mythology</option>
+            <option value="Sports">Sports</option>
+            <option value="Geography">Geography</option>
+            <option value="History">History</option>
+            <option value="Politics">Politics</option>
+            <option value="Art">Art</option>
+            <option value="Celebrities">Celebrities</option>
+            <option value="Animals">Animals</option>
+            <option value="Vehicles">Vehicles</option>
+            <option value="Science Gadgets">Science Gadgets</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="Difficulty" class="form-label mt-4">Select Difficulty</label>
+        <select class="form-select" id="Difficulty" name='difficulty'>
+            <option value="">Any Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="Type" class="form-label mt-4">Select Type</label>
+        <select class="form-select" id="Type" name='type'>
+            <option value="">Any Type</option>
+            <option value="Multiple Choice">Multiple Choice</option>
+            <option value="True&False">True & False</option>
+        </select>
+      </div>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-outline-success">Success</button>
+    </fieldset>
+  </form>
+</div>
+
+
+
+{% endblock %}
